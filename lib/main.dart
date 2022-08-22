@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+
+double degree = 270;
+double radian = degree * math.pi / 180;
 
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
@@ -69,7 +72,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
+      appBar: AppBar(title: const Text('Tutorial')),
       // You must wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner until the
       // controller has finished initializing.
@@ -78,7 +81,12 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
-            return CameraPreview(_controller);
+            return Scaffold(
+                body: Center(
+                    child: Transform.rotate(
+              angle: radian,
+              child: CameraPreview(_controller),
+            )));
           } else {
             // Otherwise, display a loading indicator.
             return const Center(child: CircularProgressIndicator());
