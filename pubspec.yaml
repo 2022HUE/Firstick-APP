@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_screenutil:
   video_player:
 
 
