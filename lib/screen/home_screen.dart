@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,7 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: <Widget>[
                                       Container(
                                         child: FlatButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      VideoPlayerScreen()),
+                                            );
+                                          },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
