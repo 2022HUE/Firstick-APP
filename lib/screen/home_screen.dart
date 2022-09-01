@@ -2,25 +2,8 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
-
-List<String> saying = [
-  '둘이 먹다 하나가 죽어도 젓가락질은 잘하더라',
-  '고기 잃고 젓가락질 고치기',
-  '열 길 물 속은 알아도 올바른 젓가락질 방법은 모른다',
-  '젓가락질 삼 주에 풍월을 읊는다',
-  '귀신이 젓가락질 할 노릇',
-  '믿는 젓가락에 입술 씹힌다',
-  '가는 콩이 고와야 오는 콩이 곱다',
-  '내 젓가락이 석자다',
-  '늦게 배운 젓가락질 날 새는 줄 모른다',
-  '다 된 밥에 젓가락 뿌린다',
-  '젓가락도 맞들면 낫다',
-  '빈 젓가락이 더 요란하다',
-  '세살 버릇 여든까지 간다',
-  '젓가락도 맞들면 낫다',
-  '빈 젓가락이 더 요란하다',
-  '세살 버릇 여든까지 간다'
-];
+import 'package:flutter/services.dart';
+import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
@@ -32,9 +15,23 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  String filePath = 'script.txt';
+  String fileText = '손도 안 대고 젓가락질 하려고 한다';
+
+  void readFile() async {
+    String text = await rootBundle.loadString(filePath);
+    await Future.delayed(Duration(seconds: 13));
+    setState(() {
+      fileText = text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var randomIndex = Random().nextInt(saying.length - 1);
+    readFile();
+    final rows = fileText.split('\n');
+    final rnd = Random().nextInt(rows.length);
+
     return Scaffold(
       body: Container(
         child: SafeArea(
@@ -80,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   //작품 간략한 정보
                                   padding: EdgeInsets.only(top: 25),
                                   child: Text(
-                                    saying[randomIndex],
+                                    rows[rnd],
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   ),
