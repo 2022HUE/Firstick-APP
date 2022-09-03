@@ -21,7 +21,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: TakePictureScreen(
+      home: Camera(
         // Pass the appropriate camera to the TakePictureScreen widget.
         camera: firstCamera,
       ),
@@ -30,8 +30,8 @@ Future<void> main() async {
 }
 
 // A screen that allows users to take a picture using a given camera.
-class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({
+class Camera extends StatefulWidget {
+  const Camera({
     super.key,
     required this.camera,
   });
@@ -39,10 +39,10 @@ class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
 
   @override
-  TakePictureScreenState createState() => TakePictureScreenState();
+  CameraState createState() => CameraState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen> {
+class CameraState extends State<Camera> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
@@ -74,84 +74,30 @@ class TakePictureScreenState extends State<TakePictureScreen> {
     final size = MediaQuery.of(context).size;
     final deviceRatio = size.width / size.height;
     return Scaffold(
-      appBar: AppBar(title: const Text('Tutorial')),
-      // You must wait until the controller is initialized before displaying the
-      // camera preview. Use a FutureBuilder to display a loading spinner until the
-      // controller has finished initializing.
-      body: FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the Future is complete, display the preview.
-            return Stack(children: <Widget>[
-              Center(
-                child: Transform.scale(
-                  scale: _controller.value.aspectRatio / deviceRatio,
-                  child: AspectRatio(
-                      aspectRatio: _controller.value.aspectRatio,
-                      child: Center(
-                          child: Transform.rotate(
-                        angle: radian,
-                        child: CameraPreview(_controller),
-                      ))),
-                ),
+        body: FutureBuilder<void>(
+      future: _initializeControllerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          // If the Future is complete, display the preview.
+          return Stack(children: <Widget>[
+            Center(
+              child: Transform.scale(
+                scale: _controller.value.aspectRatio / deviceRatio,
+                child: AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: Center(
+                        child: Transform.rotate(
+                      angle: radian,
+                      child: CameraPreview(_controller),
+                    ))),
               ),
-            ]);
-          } else {
-            // Otherwise, display a loading indicator.
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        // Provide an onPressed callback.
-        onPressed: () async {
-          // Take the Picture in a try / catch block. If anything goes wrong,
-          // catch the error.
-          try {
-            // Ensure that the camera is initialized.
-            await _initializeControllerFuture;
-
-            // Attempt to take a picture and get the file `image`
-            // where it was saved.
-            final image = await _controller.takePicture();
-
-            if (!mounted) return;
-
-            // If the picture was taken, display it on a new screen.
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
-                  imagePath: image.path,
-                ),
-              ),
-            );
-          } catch (e) {
-            // If an error occurs, log the error to the console.
-            print(e);
-          }
-        },
-        child: const Icon(Icons.camera_alt),
-      ),
-    );
-  }
-}
-
-// A widget that displays the picture taken by the user.
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({super.key, required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
-    );
+            ),
+          ]);
+        } else {
+          // Otherwise, display a loading indicator.
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+    ));
   }
 }
