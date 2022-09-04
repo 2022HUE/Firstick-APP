@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'dart:math';
 import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
@@ -12,8 +15,23 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  String filePath = 'script.txt';
+  String fileText = '손도 안 대고 젓가락질 하려고 한다';
+
+  void readFile() async {
+    String text = await rootBundle.loadString(filePath);
+    await Future.delayed(Duration(seconds: 13));
+    setState(() {
+      fileText = text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    readFile();
+    final rows = fileText.split('\n');
+    final rnd = Random().nextInt(rows.length);
+
     return Scaffold(
       body: Container(
         child: SafeArea(
@@ -59,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   //작품 간략한 정보
                                   padding: EdgeInsets.only(top: 25),
                                   child: Text(
-                                    "둘이 먹다 하나가 죽어도 젓가락질은 잘 하더라",
+                                    rows[rnd],
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   ),
