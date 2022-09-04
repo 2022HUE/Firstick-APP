@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:chopstick2/screen/home_screen.dart';
+import 'package:chopstick2/screen/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -111,8 +111,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             alignment: Alignment.bottomRight,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Camera(
+                              camera: null,
+                            )));
               },
               // heroTag: 'contact',
               child: Icon(Icons.next_plan),
