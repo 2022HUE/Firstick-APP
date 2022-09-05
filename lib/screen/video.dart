@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:camera/camera.dart';
 import 'package:chopstick2/screen/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -23,6 +24,7 @@ class VideoPlayerScreen extends StatefulWidget {
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+  late final CameraDescription firstCamera;
 
   @override
   void initState() {
@@ -37,6 +39,17 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     _controller.setLooping(true);
 
     super.initState();
+
+    _setupCameras();
+  }
+
+  void _setupCameras() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    // 디바이스에서 이용가능한 카메라 목록을 받아옵니다.
+    final cameras = await availableCameras();
+    setState(() {
+      firstCamera = cameras[0];
+    });
   }
 
   @override
@@ -115,7 +128,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => Camera(
-                              camera: null,
+                              camera: firstCamera,
                             )));
               },
               // heroTag: 'contact',

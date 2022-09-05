@@ -43,9 +43,22 @@ class CameraState extends State<Camera> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
+  void _setupCamera() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // Obtain a list of the available cameras on the device.
+    final cameras = await availableCameras();
+
+    setState(() {
+      // Get a specific camera from the list of available cameras.
+      final firstCamera = cameras.first;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    _setupCamera();
     // To display the current output from the Camera,
     // create a CameraController.
     _controller = CameraController(
