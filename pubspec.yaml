@@ -30,12 +30,14 @@ dependencies:
   flutter:
     sdk: flutter
   video_player:
-
+  tflite_flutter:
+  tflite_flutter_helper:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   camera: ^0.10.0+1
+  tflite_flutter: ^0.9.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,7 @@ flutter:
     - images/
     - video/
     - script.txt
+    - assets/models
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
