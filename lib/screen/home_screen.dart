@@ -15,22 +15,41 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  String filePath = 'script.txt';
-  String fileText = '손도 안 대고 젓가락질 하려고 한다';
+  List<String> saying = [
+    '둘이 먹다 하나가 죽어도 젓가락질은 잘하더라',
+    '고기 잃고 젓가락질 고치기',
+    '열 길 물 속은 알아도 올바른 젓가락질 방법은 모른다',
+    '젓가락질 삼 주에 풍월을 읊는다',
+    '귀신이 젓가락질 할 노릇',
+    '믿는 젓가락에 입술 씹힌다',
+    '가는 콩이 고와야 오는 콩이 곱다',
+    '내 젓가락이 석자다',
+    '늦게 배운 젓가락질 날 새는 줄 모른다',
+    '다 된 밥에 젓가락 뿌린다',
+    '젓가락도 맞들면 낫다',
+    '빈 젓가락이 더 요란하다',
+    '세살 버릇 여든까지 간다',
+    '젓가락도 맞들면 낫다',
+    '빈 젓가락이 더 요란하다',
+    '세살 버릇 여든까지 간다'
+  ];
+
+  // String filePath = 'script.txt';
+  // String fileText = '환영합니다';
 
   void readFile() async {
-    String text = await rootBundle.loadString(filePath);
+    // String text = await rootBundle.loadString(filePath);
     await Future.delayed(Duration(seconds: 13));
     setState(() {
-      fileText = text;
+      // fileText = text;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     readFile();
-    final rows = fileText.split('\n');
-    final rnd = Random().nextInt(rows.length);
+    // final rows = fileText.split('\n');
+    final rnd = Random().nextInt(saying.length - 1);
 
     return Scaffold(
       body: Container(
@@ -43,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/chopsticks.png'),
+                        image: AssetImage('assets/images/chopsticks.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -59,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Container(
                                   //사진 콘테이너
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: Image.asset('images/chopsticks.png'),
+                                  child: Image.asset(
+                                      'assets/images/chopsticks.png'),
                                   height: 335,
                                 ),
                                 Container(
@@ -77,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   //작품 간략한 정보
                                   padding: EdgeInsets.only(top: 25),
                                   child: Text(
-                                    rows[rnd],
+                                    saying[rnd],
                                     style: TextStyle(
                                         fontSize: 17, color: Colors.white),
                                   ),
