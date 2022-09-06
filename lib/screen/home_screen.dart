@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.maxFinite,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/chopsticks.png'),
+                        image: AssetImage('assets/images/chopsticks.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -78,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Container(
                                   //사진 콘테이너
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: Image.asset('images/chopsticks.png'),
+                                  child: Image.asset(
+                                      'assets/images/chopsticks.png'),
                                   height: 335,
                                 ),
                                 Container(
