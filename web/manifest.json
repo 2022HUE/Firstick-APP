@@ -1,6 +1,6 @@
 {
-    "name": "firstick",
-    "short_name": "firstick",
+    "name": "firstick_app",
+    "short_name": "firstick_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
