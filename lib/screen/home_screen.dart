@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     rnd], // 속담 랜덤으로 애니메이션 적용해서 출력
                                                 speed: const Duration(
                                                     milliseconds:
-                                                        300)) // 애니메이셔 글자당 일시중지 시간
+                                                        300)) // 애니메이션 글자당 일시중지 시간
                                           ],
                                           repeatForever: true, // 애니메이션 영원히 반복
                                           pause: const Duration(
@@ -155,7 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
                                                   // 팝업 알람 띄우기
-                                                  content: Text("준비 중입니다.",
+                                                  title: Text("서비스 준비중"),
+                                                  content: Text(
+                                                      "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
                                                       textAlign: TextAlign
                                                           .center), // 글씨 중앙 정렬
                                                   actions: [
@@ -192,7 +194,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
                                                   // 팝업 알람 띄우기
-                                                  content: Text("준비 중입니다.",
+                                                  title: Text("서비스 준비중"),
+                                                  content: Text(
+                                                      "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
                                                       textAlign: TextAlign
                                                           .center), // 글씨 중앙 정렬
                                                   actions: [
