@@ -142,7 +142,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Container(
                                         child: FlatButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              barrierDismissible:
+                                                  true, // 바깥 영역 터치시 닫을지 여부
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  content: Text("준비 중입니다.",
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                  actions: [
+                                                    Center(
+                                                        child: FlatButton(
+                                                      child: Text("확인"),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    ))
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
@@ -155,7 +178,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Container(
                                         child: FlatButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              barrierDismissible: true,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  content: Text("준비 중입니다.",
+                                                      textAlign:
+                                                          TextAlign.center),
+                                                  actions: [
+                                                    Center(
+                                                        child: FlatButton(
+                                                      child: Text("확인"),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    ))
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
