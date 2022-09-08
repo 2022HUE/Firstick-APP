@@ -109,7 +109,7 @@ class CameraState extends State<Camera> {
               ),
             ),
             // 카메라 위 painter widget 불러오기
-            Center(child: drawHands)
+            // Center(child: drawHands)
           ]);
         } else {
           // Otherwise, display a loading indicator.
