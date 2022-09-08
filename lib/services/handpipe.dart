@@ -108,3 +108,5 @@ class Handpipe {
     return {'point': landmarkResults};
   }
 }
+
+// predict 를 실행할 함수 필요
