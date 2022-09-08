@@ -97,23 +97,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Container(
                                   //작품 간략한 정보
-                                  padding: EdgeInsets.only(top: 25),
-                                  child: Text(
-                                    saying[rnd],
-                                    style: TextStyle(
-                                        fontFamily: '오',
-                                        fontSize: 17,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                Container(
-                                  //밑에 버튼 세개
-                                  padding: EdgeInsets.fromLTRB(10, 80, 10, 100),
                                   height: 55,
                                   alignment: Alignment.center,
                                   child: DefaultTextStyle(
                                       style: TextStyle(
-                                          fontSize: 17, color: Colors.white),
+                                          fontFamily: '오',
+                                          fontSize: 17,
+                                          color: Colors.white),
                                       child: AnimatedTextKit(
                                           //Typerwiter 애니메이션 사용
                                           animatedTexts: [
@@ -131,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Container(
                                   //밑에 버튼 세개
-                                  padding: EdgeInsets.fromLTRB(10, 30, 10, 100),
+                                  padding: EdgeInsets.fromLTRB(10, 40, 10, 100),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
