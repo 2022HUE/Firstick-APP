@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> saying = [
     '둘이 먹다 하나가 죽어도 젓가락질은 잘하더라',
     '고기 잃고 젓가락질 고치기',
-    '열 길 물 속은 알아도 올바른 젓가락질 방법은 모른다',
+    '열 길 물 속은 알아도 올바른 젓가락질은 모른다',
     '젓가락질 삼 주에 풍월을 읊는다',
     '귀신이 젓가락질 할 노릇',
     '믿는 젓가락에 입술 씹힌다',
@@ -88,6 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     "Welcome to Chopstick !",
                                     style: TextStyle(
+                                        fontFamily: '일',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 30,
                                         color: Colors.white),
@@ -99,7 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     saying[rnd],
                                     style: TextStyle(
-                                        fontSize: 17, color: Colors.white),
+                                        fontFamily: '오',
+                                        fontSize: 17,
+                                        color: Colors.white),
                                   ),
                                 ),
                                 Container(
@@ -126,6 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               '튜토리얼',
                                               style: TextStyle(
+                                                  fontFamily: '오',
+                                                  fontSize: 15,
                                                   color: Colors.black),
                                             ),
                                           ),
@@ -140,6 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             radius: 55,
                                             child: Text('교정',
                                                 style: TextStyle(
+                                                    fontFamily: '오',
+                                                    fontSize: 15,
                                                     color: Colors.black)),
                                           ),
                                         ),
@@ -151,9 +158,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
                                             radius: 55,
-                                            child: Text('미니게임',
-                                                style: TextStyle(
-                                                    color: Colors.black)),
+                                            child: Text(
+                                              '미니게임',
+                                              style: TextStyle(
+                                                  fontFamily: '오',
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
                                           ),
                                         ),
                                       ),

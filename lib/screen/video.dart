@@ -63,7 +63,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chopsticks Video'),
+        title: Text(
+          'Chopsticks Video',
+          style: TextStyle(fontFamily: '사'),
+        ),
       ),
       // VideoPlayerController가 초기화를 진행하는 동안 로딩 스피너를 보여주기 위해
       // FutureBuilder를 사용합니다.
