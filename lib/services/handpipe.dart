@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:image/image.dart' as imageLib;
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
+import '../utils/image_utils.dart';
 
 // load models/labels data
 import '../../setting/models.dart';
-// import '../../setting/labels.dart';
 
 class Handpipe {
+  Handpipe({this.interpreter}) {
+    loadModel();
+  }
   // init
   final int input_size = 224;
   final double exist_threshold = 0.1;
@@ -19,34 +22,22 @@ class Handpipe {
   late List<List<int>> _outputShapes;
   late List<TfLiteType> _outputTypes;
 
-  late Interpreter _interpreter;
-  final interpreterOptions = InterpreterOptions();
-  // late List<String> _labels;
-
-  Interpreter get interpreter => _interpreter;
-  // List<String> get labels => _labels;
-
-  Handpipe() {
-    loadModel(interpreter: interpreter);
-  }
+  Interpreter? interpreter;
 
   /// Loads interpreter from asset
-  void loadModel({required Interpreter interpreter}) async {
+  void loadModel() async {
     try {
-      if (interpreter == null) {
-        _interpreter = await Interpreter.fromAsset(
-          Models.handpipe,
-          options: interpreterOptions,
-        );
-      }
+      final interpreterOptions = InterpreterOptions();
+      interpreter ??= await Interpreter.fromAsset(Models.handpipe,
+          options: interpreterOptions);
 
-      var outputTensors = _interpreter.getOutputTensors();
+      var outputTensors = interpreter!.getOutputTensors();
       _outputShapes = [];
       _outputTypes = [];
-      outputTensors.forEach((tensor) {
+      for (var tensor in outputTensors) {
         _outputShapes.add(tensor.shape);
         _outputTypes.add(tensor.type);
-      });
+      }
     } catch (e) {
       print("Error while creating interpreter: $e");
     }
@@ -63,13 +54,15 @@ class Handpipe {
   }
 
   Map<String, dynamic>? predict(imageLib.Image image) {
-    if (_interpreter == null) {
+    if (interpreter == null) {
       print('Interpreter not initialized');
       return null;
     }
 
     if (Platform.isAndroid) {
+      // 카메라 방향 270도로 바꾸기
       image = imageLib.copyRotate(image, -90);
+      // 좌우반전 시키기
       image = imageLib.flipHorizontal(image);
     }
 
@@ -89,7 +82,7 @@ class Handpipe {
       2: outputScores.buffer,
     };
 
-    interpreter.runForMultipleInputs(inputs, outputs);
+    interpreter!.runForMultipleInputs(inputs, outputs);
 
     if (outputExist.getDoubleValue(0) < exist_threshold ||
         outputScores.getDoubleValue(0) < score_threshold) {
@@ -109,4 +102,12 @@ class Handpipe {
   }
 }
 
-// predict 를 실행할 함수 필요
+// 손 인식하는 handler 생성
+Map<String, dynamic>? handDetector(Map<String, dynamic> params) {
+  final image = ImageUtils.convertCameraImage(params['cameraImage']);
+  final handpipe =
+      Handpipe(interpreter: Interpreter.fromAddress(params['modelAddress']));
+  final result = handpipe.predict(image!);
+
+  return result;
+}
