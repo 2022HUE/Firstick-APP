@@ -15,7 +15,7 @@ class Handpipe {
   final double exist_threshold = 0.1;
   final double score_threshold = 0.3;
 
-  // Shapes of output tensors
+  // Shapes/Types of output tensors
   late List<List<int>> _outputShapes;
   late List<TfLiteType> _outputTypes;
 
@@ -23,6 +23,7 @@ class Handpipe {
   final interpreterOptions = InterpreterOptions();
   // late List<String> _labels;
 
+  /// Gets the interpreter instance
   Interpreter get interpreter => _interpreter;
   // List<String> get labels => _labels;
 
