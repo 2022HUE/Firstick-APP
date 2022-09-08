@@ -102,14 +102,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                           fontSize: 17, color: Colors.white),
                                       child: AnimatedTextKit(
+                                          //Typerwiter 애니메이션 사용
                                           animatedTexts: [
-                                            TyperAnimatedText(saying[rnd],
+                                            TyperAnimatedText(
+                                                saying[
+                                                    rnd], // 속담 랜덤으로 애니메이션 적용해서 출력
                                                 speed: const Duration(
-                                                    milliseconds: 300))
+                                                    milliseconds:
+                                                        300)) // 애니메이셔 글자당 일시중지 시간
                                           ],
-                                          repeatForever: true,
+                                          repeatForever: true, // 애니메이션 영원히 반복
                                           pause: const Duration(
-                                              milliseconds: 5000))),
+                                              milliseconds:
+                                                  5000))), //애니메이션 사이 일시중지 시간
                                 ),
                                 Container(
                                   //밑에 버튼 세개
@@ -146,19 +151,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                             showDialog(
                                               context: context,
                                               barrierDismissible:
-                                                  true, // 바깥 영역 터치시 닫을지 여부
+                                                  true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
+                                                  // 팝업 알람 띄우기
                                                   content: Text("준비 중입니다.",
-                                                      textAlign:
-                                                          TextAlign.center),
+                                                      textAlign: TextAlign
+                                                          .center), // 글씨 중앙 정렬
                                                   actions: [
                                                     Center(
                                                         child: FlatButton(
                                                       child: Text("확인"),
                                                       onPressed: () {
                                                         Navigator.of(context)
-                                                            .pop();
+                                                            .pop(); // 확인 누를 경우 팝업 무시하기
                                                       },
                                                     ))
                                                   ],
@@ -181,19 +187,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                           onPressed: () {
                                             showDialog(
                                               context: context,
-                                              barrierDismissible: true,
+                                              barrierDismissible:
+                                                  true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
+                                                  // 팝업 알람 띄우기
                                                   content: Text("준비 중입니다.",
-                                                      textAlign:
-                                                          TextAlign.center),
+                                                      textAlign: TextAlign
+                                                          .center), // 글씨 중앙 정렬
                                                   actions: [
                                                     Center(
                                                         child: FlatButton(
                                                       child: Text("확인"),
                                                       onPressed: () {
                                                         Navigator.of(context)
-                                                            .pop();
+                                                            .pop(); // 확인 누를 경우 팝업 무시하기
                                                       },
                                                     ))
                                                   ],
