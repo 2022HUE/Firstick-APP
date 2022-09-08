@@ -4,6 +4,8 @@ import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'handpainter.dart';
+
 double degree = 270;
 double radian = degree * math.pi / 180;
 
@@ -102,6 +104,8 @@ class CameraState extends State<Camera> {
                     ))),
               ),
             ),
+            // 카메라 위 painter widget 불러오기
+            Center(child: drawHands)
           ]);
         } else {
           // Otherwise, display a loading indicator.
@@ -109,5 +113,25 @@ class CameraState extends State<Camera> {
         }
       },
     ));
+  }
+  // 손 그리는 painter 관련 에러 발생하여 주석 처리함
+  // Widget get drawHands => ModelPainter(
+  //       customPainter: HandsPainter(),
+  //     );
+}
+
+class ModelPainter extends StatelessWidget {
+  ModelPainter({
+    required this.customPainter,
+    Key? key,
+  }) : super(key: key);
+
+  final CustomPainter customPainter;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: customPainter,
+    );
   }
 }
