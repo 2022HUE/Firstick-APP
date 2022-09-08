@@ -2,11 +2,13 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
