@@ -65,6 +65,7 @@ flutter:
     - assets/models/ 
     - assets/images/ 
     - assets/video/ 
+    - assets/fonts/ 
     - assets/script.txt
   #   - images/a_dot_ham.jpeg
 
@@ -79,12 +80,43 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: 일
+      fonts:
+        - asset: assets/fonts/메로나.otf
+          style: italic
+    - family: 일B
+      fonts:
+        - asset: assets/fonts/메로나B.otf
+          style: italic
+    - family: 이
+      fonts:
+        - asset: assets/fonts/배민.otf
+          style: italic
+    - family: 사
+      fonts:
+        - asset: assets/fonts/고양.ttf
+          style: italic
+    - family: 오
+      fonts:
+        - asset: assets/fonts/오락실.otf
+          style: italic
+    - family: 육
+      fonts:
+        - asset: assets/fonts/둥글.ttf
+          style: italic
+    - family: 칠
+      fonts:
+        - asset: assets/fonts/롯데마트B.ttf
+          style: italic
+    
+    # - family: 오
+    #   fonts:
+    #     - asset: assets/font/5.otf
+    #       style: italic
+                                                  
+
+          # weight: 700
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
