@@ -10,12 +10,16 @@ double radian = degree * math.pi / 180;
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
+
+  // availableCameras가 안될 것을 대비
   WidgetsFlutterBinding.ensureInitialized();
 
   // Obtain a list of the available cameras on the device.
+  // 사용 가능한 카메라 불러오기
   final cameras = await availableCameras();
 
   // Get a specific camera from the list of available cameras.
+  // 현재 전면(first) 카메라 불러옴
   final firstCamera = cameras.first;
 
   runApp(
