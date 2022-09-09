@@ -65,7 +65,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       appBar: AppBar(
         title: Text(
           'Chopsticks Video',
-          style: TextStyle(fontFamily: '사'),
+          style: TextStyle(fontFamily: '칠'),
         ),
       ),
       // VideoPlayerController가 초기화를 진행하는 동안 로딩 스피너를 보여주기 위해

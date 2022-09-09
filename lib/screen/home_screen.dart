@@ -2,10 +2,13 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -39,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void readFile() async {
     // String text = await rootBundle.loadString(filePath);
-    await Future.delayed(Duration(seconds: 13));
+    await Future.delayed(Duration(seconds: 9));
     setState(() {
       // fileText = text;
     });
@@ -88,26 +91,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Text(
                                     "Welcome to Chopstick !",
                                     style: TextStyle(
-                                        fontFamily: '일',
+                                        fontFamily: '칠',
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 30,
+                                        fontSize: 35,
                                         color: Colors.white),
                                   ),
                                 ),
                                 Container(
                                   //작품 간략한 정보
-                                  padding: EdgeInsets.only(top: 25),
-                                  child: Text(
-                                    saying[rnd],
-                                    style: TextStyle(
-                                        fontFamily: '오',
-                                        fontSize: 17,
-                                        color: Colors.white),
-                                  ),
+                                  height: 55,
+                                  alignment: Alignment.center,
+                                  child: DefaultTextStyle(
+                                      style: TextStyle(
+                                          fontFamily: '오',
+                                          fontSize: 17,
+                                          color: Colors.white),
+                                      child: AnimatedTextKit(
+                                          //Typerwiter 애니메이션 사용
+                                          animatedTexts: [
+                                            TyperAnimatedText(
+                                                saying[
+                                                    rnd], // 속담 랜덤으로 애니메이션 적용해서 출력
+                                                speed: const Duration(
+                                                    milliseconds:
+                                                        300)) // 애니메이션 글자당 일시중지 시간
+                                          ],
+                                          repeatForever: true, // 애니메이션 영원히 반복
+                                          pause: const Duration(
+                                              milliseconds:
+                                                  5000))), //애니메이션 사이 일시중지 시간
                                 ),
                                 Container(
                                   //밑에 버튼 세개
-                                  padding: EdgeInsets.fromLTRB(10, 80, 10, 100),
+                                  padding: EdgeInsets.fromLTRB(10, 40, 10, 100),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -130,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               '튜토리얼',
                                               style: TextStyle(
                                                   fontFamily: '오',
-                                                  fontSize: 15,
+                                                  fontSize: 16,
                                                   color: Colors.black),
                                             ),
                                           ),
@@ -138,7 +154,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Container(
                                         child: FlatButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              barrierDismissible:
+                                                  true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  // 팝업 알람 띄우기
+                                                  title: Text("서비스 준비중"),
+                                                  content: Text(
+                                                      "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
+                                                      textAlign: TextAlign
+                                                          .center), // 글씨 중앙 정렬
+                                                  actions: [
+                                                    Center(
+                                                        child: FlatButton(
+                                                      child: Text("확인"),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop(); // 확인 누를 경우 팝업 무시하기
+                                                      },
+                                                    ))
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
@@ -146,14 +188,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text('교정',
                                                 style: TextStyle(
                                                     fontFamily: '오',
-                                                    fontSize: 15,
+                                                    fontSize: 16,
                                                     color: Colors.black)),
                                           ),
                                         ),
                                       ),
                                       Container(
                                         child: FlatButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              barrierDismissible:
+                                                  true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  // 팝업 알람 띄우기
+                                                  title: Text("서비스 준비중"),
+                                                  content: Text(
+                                                      "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
+                                                      textAlign: TextAlign
+                                                          .center), // 글씨 중앙 정렬
+                                                  actions: [
+                                                    Center(
+                                                        child: FlatButton(
+                                                      child: Text("확인"),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop(); // 확인 누를 경우 팝업 무시하기
+                                                      },
+                                                    ))
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
                                             backgroundColor: Colors.white,
@@ -162,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               '미니게임',
                                               style: TextStyle(
                                                   fontFamily: '오',
-                                                  fontSize: 15,
+                                                  fontSize: 16,
                                                   color: Colors.black),
                                             ),
                                           ),

@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -36,7 +36,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  camera: ^0.10.0+1
+  camera:
+    git:
+      url: https://github.com/flutter/plugins
+      path: packages/camera/camera
+      ref: 9e46048ad2e1f085c1e8f6c77391fa52025e681f
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +59,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -65,7 +69,7 @@ flutter:
     - assets/models/ 
     - assets/images/ 
     - assets/video/ 
-    - assets/font/ 
+    - assets/fonts/ 
     - assets/script.txt
   #   - images/a_dot_ham.jpeg
 
@@ -83,31 +87,39 @@ flutter:
   fonts:
     - family: 일
       fonts:
-        - asset: assets/font/1.otf
+        - asset: assets/fonts/메로나.otf
+          style: italic
+    - family: 일B
+      fonts:
+        - asset: assets/fonts/메로나B.otf
           style: italic
     - family: 이
       fonts:
-        - asset: assets/font/2.otf
-          style: italic
-    - family: 삼r
-      fonts:
-        - asset: assets/font/3R.otf
-          style: italic
-    - family: 삼b
-      fonts:
-        - asset: assets/font/3B.otf
+        - asset: assets/fonts/배민.otf
           style: italic
     - family: 사
       fonts:
-        - asset: assets/font/4.ttf
+        - asset: assets/fonts/고양.ttf
           style: italic
     - family: 오
       fonts:
-        - asset: assets/font/5.otf
+        - asset: assets/fonts/오락실.otf
           style: italic
-                                                  
+    - family: 육
+      fonts:
+        - asset: assets/fonts/둥글.ttf
+          style: italic
+    - family: 칠
+      fonts:
+        - asset: assets/fonts/롯데마트B.ttf
+          style: italic
 
-          # weight: 700
+    # - family: 오
+    #   fonts:
+    #     - asset: assets/font/5.otf
+    #       style: italic
+
+    # weight: 700
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
