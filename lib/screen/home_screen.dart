@@ -4,6 +4,7 @@ import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -132,11 +133,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         child: FlatButton(
                                           onPressed: () {
                                             Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      VideoPlayerScreen()),
-                                            );
+                                                context,
+                                                PageTransition(
+                                                    type: PageTransitionType
+                                                        .rightToLeft,
+                                                    child:
+                                                        VideoPlayerScreen()));
                                           },
                                           padding: EdgeInsets.only(top: 0),
                                           child: CircleAvatar(
