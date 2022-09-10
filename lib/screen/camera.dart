@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 import 'package:camera/camera.dart';
+import 'package:chopstick2/services/handpipe.dart';
 import 'package:flutter/material.dart';
 
 import 'handpainter.dart';
@@ -48,6 +49,7 @@ class Camera extends StatefulWidget {
 class CameraState extends State<Camera> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  late final double deviceRatio;
 
   void _setupCamera() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -109,7 +111,7 @@ class CameraState extends State<Camera> {
               ),
             ),
             // 카메라 위 painter widget 불러오기
-            // Center(child: drawHands)
+            Center(child: drawHands)
           ]);
         } else {
           // Otherwise, display a loading indicator.
@@ -118,10 +120,15 @@ class CameraState extends State<Camera> {
       },
     ));
   }
+
   // 손 그리는 painter 관련 에러 발생하여 주석 처리함
-  // Widget get drawHands => ModelPainter(
-  //       customPainter: HandsPainter(),
-  //     );
+  Widget get drawHands => ModelPainter(
+        customPainter: HandsPainter(
+          points: [],
+          // points: Handpipe['point'] ?? [],
+          ratio: deviceRatio,
+        ),
+      );
 }
 
 class ModelPainter extends StatelessWidget {
