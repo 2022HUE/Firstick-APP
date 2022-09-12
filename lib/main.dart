@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:chopstick2/screen/home_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:tflite_flutter/tflite_flutter.dart';
+// import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'package:chopstick2/services/locator.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
@@ -14,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BbongFlix',
+      title: 'HUE',
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Color.fromARGB(246, 222, 210, 210),
