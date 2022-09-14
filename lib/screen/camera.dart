@@ -84,7 +84,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     try {
       await _controller!.initialize().then((value) {
         if (!mounted) return;
-        // _imageStreamToggle;
+        _imageStreamToggle;
       });
     } on CameraException catch (e) {
       _showSnackBar('카메라에 문제가 발생했습니다.');
@@ -135,7 +135,9 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     );
   }
 
-  AppBar get _buildAppBar => AppBar();
+  AppBar get _buildAppBar => AppBar(
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      );
 
   Row get _button => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -147,13 +149,13 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
               Icons.cameraswitch,
             ),
           ),
-          IconButton(
-            onPressed: () => _imageStreamToggle,
-            color: Colors.white,
-            icon: const Icon(
-              Icons.filter_center_focus,
-            ),
-          ),
+          // IconButton(
+          //   onPressed: () => _imageStreamToggle,
+          //   color: Colors.white,
+          //   icon: const Icon(
+          //     Icons.filter_center_focus,
+          //   ),
+          // ),
         ],
       );
 

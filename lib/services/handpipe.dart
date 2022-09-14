@@ -20,27 +20,15 @@ class Handpipe {
   final double existThreshold = 0.1;
   final double scoreThreshold = 0.3;
 
-<<<<<<< HEAD
   // Shapes/Types of output tensors
-  late List<List<int>> _outputShapes;
-  late List<TfLiteType> _outputTypes;
-=======
-  // Shapes of output tensors
   late List<List<int>> outputShapes;
   late List<TfLiteType> outputTypes;
->>>>>>> 999ad7d8e73d3e2f75ba658f3189fe52debba2d0
 
   @override
   Interpreter? interpreter;
 
-<<<<<<< HEAD
-  /// Gets the interpreter instance
-  Interpreter get interpreter => _interpreter;
-  // List<String> get labels => _labels;
-=======
   @override
   List<Object> get props => [];
->>>>>>> 999ad7d8e73d3e2f75ba658f3189fe52debba2d0
 
   @override
   int get getAddress => interpreter!.address;
@@ -91,6 +79,7 @@ class Handpipe {
       image = imageLib.copyRotate(image, -90);
       // 좌우반전 시키기
       image = imageLib.flipHorizontal(image);
+      image = imageLib.flipVertical(image);
     }
     final tensorImage = TensorImage(TfLiteType.float32);
     tensorImage.loadImage(image);
