@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:chopstick2/utils/isolate_utils.dart';
@@ -180,6 +181,19 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     }
   }
 
+  void timer() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+  }
+
+  void _toast(msg) {
+    // final Map<String, dynamic>? inferenceResults =
+    //     _inferenceService.inferenceResults;
+    Fluttertoast.showToast(
+      msg: msg,
+      gravity: ToastGravity.TOP,
+    );
+  }
+
   // 카메라 전면 <-> 후면
   void get _cameraDirectionToggle {
     setState(() {
@@ -207,7 +221,19 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
       });
 
       if (_draw) {
-        debugPrint('***********draw***********'); // debug!
+        // debugPrint('***********draw***********'); // debug!
+        if (_inferenceService.inferenceResults?['diff'] != null) {
+          if (_inferenceService.inferenceResults?['diff'] > 1400) {
+            Fluttertoast.cancel();
+            _toast('젓가락을 다시 잡아주세요.');
+          } else {
+            Fluttertoast.cancel();
+          }
+        } else {
+          debugPrint('null');
+          Fluttertoast.cancel();
+        }
+        // _toast();
         await _inferenceService.inference(
           cameraImage: cameraImage,
           isolateUtils: _isolateUtils,

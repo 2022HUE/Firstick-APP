@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:chopstick2/services/locator.dart';
 import 'package:chopstick2/services/inference_service.dart';
@@ -50,6 +51,14 @@ class Preview extends StatelessWidget {
           ratio: deviceRatio,
         ),
       );
+
+  // void _toast() {
+  //   Fluttertoast.showToast(
+  //     msg: inferenceResults?['diff'] ?? [],
+  //     gravity: ToastGravity.TOP,
+  //     );
+  // }
+
 }
 
 class _Painter extends StatelessWidget {
