@@ -32,7 +32,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   void initState() {
     // VideoPlayerController를 저장하기 위한 변수를 만듭니다. VideoPlayerController는
     // asset, 파일, 인터넷 등의 영상들을 제어하기 위해 다양한 생성자를 제공합니다.
-    _controller = VideoPlayerController.asset('assets/video/Tutorial.mp4');
+    _controller = VideoPlayerController.asset('assets/videos/Tutorial.mp4');
 
     // 컨트롤러를 초기화하고 추후 사용하기 위해 Future를 변수에 할당합니다.
     _initializeVideoPlayerFuture = _controller.initialize();
