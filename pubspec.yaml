@@ -69,7 +69,7 @@ flutter:
   assets:
     - assets/models/ 
     - assets/images/ 
-    - assets/video/ 
+    - assets/videos/ 
     - assets/fonts/ 
     - assets/script.txt
   #   - images/a_dot_ham.jpeg
