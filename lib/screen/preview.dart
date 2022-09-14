@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:chopstick2/services/locator.dart';
 import 'package:chopstick2/services/inference_service.dart';
-import './handpainter.dart';
+import 'handspainter.dart';
 
 class Preview extends StatelessWidget {
   Preview({

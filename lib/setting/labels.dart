@@ -1,4 +1,4 @@
 mixin Labels {
   // Add labels
-  // static const String labeltest = 'models/tmp.txt';
+  static const String labelChopsticks = 'models/chopsticks.txt';
 }

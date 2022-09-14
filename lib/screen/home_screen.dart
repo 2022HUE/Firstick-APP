@@ -84,15 +84,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: Image.asset(
                                       'assets/images/chopsticks.png'),
-                                  height: 335,
+                                  height: 380,
                                 ),
                                 Container(
                                   //작품 간략한 정보
-                                  padding: EdgeInsets.only(top: 50),
+                                  padding: EdgeInsets.only(top: 35),
                                   child: Text(
                                     "Welcome to Chopstick !",
                                     style: TextStyle(
-                                        fontFamily: '칠',
+                                        fontFamily: '롯데마트B',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 35,
                                         color: Colors.white),
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   alignment: Alignment.center,
                                   child: DefaultTextStyle(
                                       style: TextStyle(
-                                          fontFamily: '오',
+                                          fontFamily: '롯데마트B',
                                           fontSize: 17,
                                           color: Colors.white),
                                       child: AnimatedTextKit(
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               '튜토리얼',
                                               style: TextStyle(
-                                                  fontFamily: '오',
+                                                  fontFamily: '롯데마트B',
                                                   fontSize: 16,
                                                   color: Colors.black),
                                             ),
@@ -164,15 +164,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
                                                   // 팝업 알람 띄우기
-                                                  title: Text("서비스 준비중"),
+                                                  title: Text("서비스 준비중",
+                                                      style: TextStyle(
+                                                        fontFamily: '롯데마트B',
+                                                      )),
                                                   content: Text(
                                                       "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
+                                                      style: TextStyle(
+                                                        fontFamily: '롯데마트B',
+                                                      ),
                                                       textAlign: TextAlign
                                                           .center), // 글씨 중앙 정렬
                                                   actions: [
                                                     Center(
                                                         child: FlatButton(
-                                                      child: Text("확인"),
+                                                      child: Text("확인",
+                                                          style: TextStyle(
+                                                            fontFamily: '롯데마트B',
+                                                          )),
                                                       onPressed: () {
                                                         Navigator.of(context)
                                                             .pop(); // 확인 누를 경우 팝업 무시하기
@@ -189,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             radius: 55,
                                             child: Text('교정',
                                                 style: TextStyle(
-                                                    fontFamily: '오',
+                                                    fontFamily: '롯데마트B',
                                                     fontSize: 16,
                                                     color: Colors.black)),
                                           ),
@@ -205,15 +214,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
                                                   // 팝업 알람 띄우기
-                                                  title: Text("서비스 준비중"),
+                                                  title: Text("서비스 준비중",
+                                                      style: TextStyle(
+                                                        fontFamily: '롯데마트B',
+                                                      )),
                                                   content: Text(
                                                       "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
+                                                      style: TextStyle(
+                                                        fontFamily: '롯데마트B',
+                                                      ),
                                                       textAlign: TextAlign
                                                           .center), // 글씨 중앙 정렬
                                                   actions: [
                                                     Center(
                                                         child: FlatButton(
-                                                      child: Text("확인"),
+                                                      child: Text("확인",
+                                                          style: TextStyle(
+                                                            fontFamily: '롯데마트B',
+                                                          )),
                                                       onPressed: () {
                                                         Navigator.of(context)
                                                             .pop(); // 확인 누를 경우 팝업 무시하기
@@ -231,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               '미니게임',
                                               style: TextStyle(
-                                                  fontFamily: '오',
+                                                  fontFamily: '롯데마트B',
                                                   fontSize: 16,
                                                   color: Colors.black),
                                             ),
