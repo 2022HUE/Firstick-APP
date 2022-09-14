@@ -135,9 +135,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                     return Camera();
                   },
                 ));
-                // builder: (context) => Camera(
-                //       camera: firstCamera,
-                //     )));
               },
               // heroTag: 'contact',
               child: Icon(Icons.next_plan),

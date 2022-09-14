@@ -84,11 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: Image.asset(
                                       'assets/images/chopsticks.png'),
-                                  height: 335,
+                                  height: 380,
                                 ),
                                 Container(
                                   //작품 간략한 정보
-                                  padding: EdgeInsets.only(top: 50),
+                                  padding: EdgeInsets.only(top: 35),
                                   child: Text(
                                     "Welcome to Chopstick !",
                                     style: TextStyle(
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                           fontFamily: '롯데마트B',
                                           fontSize: 17,
-                                          color: Colors.black),
+                                          color: Colors.white),
                                       child: AnimatedTextKit(
                                           //Typerwiter 애니메이션 사용
                                           animatedTexts: [
