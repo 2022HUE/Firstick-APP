@@ -3,6 +3,8 @@ import 'package:camera/camera.dart';
 import 'package:chopstick2/screen/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:chopstick2/services/locator.dart';
+import 'package:chopstick2/services/inference_service.dart';
 
 void main() => runApp(VideoPlayerApp());
 
@@ -63,7 +65,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chopsticks Video'),
+        title: Text(
+          'Chopsticks Video',
+          style: TextStyle(fontFamily: '칠'),
+        ),
       ),
       // VideoPlayerController가 초기화를 진행하는 동안 로딩 스피너를 보여주기 위해
       // FutureBuilder를 사용합니다.
@@ -124,12 +129,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             alignment: Alignment.bottomRight,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Camera(
-                              camera: firstCamera,
-                            )));
+                locator<InferenceService>().setModelConfig();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return Camera();
+                  },
+                ));
+                // builder: (context) => Camera(
+                //       camera: firstCamera,
+                //     )));
               },
               // heroTag: 'contact',
               child: Icon(Icons.next_plan),
