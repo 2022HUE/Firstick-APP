@@ -22,7 +22,7 @@ class Handpipe {
   final double existThreshold = 0.1;
   final double scoreThreshold = 0.3;
 
-  // Shapes of output tensors
+  // Shapes/Types of output tensors
   late List<List<int>> outputShapes;
   late List<TfLiteType> outputTypes;
 
