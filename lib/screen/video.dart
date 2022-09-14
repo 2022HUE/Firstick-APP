@@ -65,9 +65,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 156, 181, 217),
         title: Text(
-          'Chopsticks Video',
-          style: TextStyle(fontFamily: '칠'),
+          '튜토리얼 영상',
+          // style: TextStyle(fontFamily: '칠'),
         ),
       ),
       // VideoPlayerController가 초기화를 진행하는 동안 로딩 스피너를 보여주기 위해

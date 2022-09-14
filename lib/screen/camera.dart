@@ -136,7 +136,11 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
   }
 
   AppBar get _buildAppBar => AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Color.fromARGB(255, 156, 181, 217),
+        // title: Text(
+        // '',
+        // style: TextStyle(fontFamily: '칠'),
+        // ),
       );
 
   Row get _button => Row(
