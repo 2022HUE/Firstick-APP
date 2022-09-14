@@ -86,31 +86,31 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: 일
+    - family: 메로나
       fonts:
         - asset: assets/fonts/메로나.otf
           style: italic
-    - family: 일B
+    - family: 메로나B
       fonts:
         - asset: assets/fonts/메로나B.otf
           style: italic
-    - family: 이
+    - family: 배민
       fonts:
         - asset: assets/fonts/배민.otf
           style: italic
-    - family: 사
+    - family: 고양
       fonts:
         - asset: assets/fonts/고양.ttf
           style: italic
-    - family: 오
+    - family: 오락실
       fonts:
         - asset: assets/fonts/오락실.otf
           style: italic
-    - family: 육
+    - family: 둥글
       fonts:
         - asset: assets/fonts/둥글.ttf
           style: italic
-    - family: 칠
+    - family: 롯데마트B
       fonts:
         - asset: assets/fonts/롯데마트B.ttf
           style: italic
