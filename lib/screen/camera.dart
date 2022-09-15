@@ -181,13 +181,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     }
   }
 
-  void timer() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-  }
-
   void _toast(msg) {
-    // final Map<String, dynamic>? inferenceResults =
-    //     _inferenceService.inferenceResults;
     Fluttertoast.showToast(
       msg: msg,
       gravity: ToastGravity.TOP,
@@ -223,14 +217,14 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
       if (_draw) {
         // debugPrint('***********draw***********'); // debug!
         if (_inferenceService.inferenceResults?['diff'] != null) {
-          if (_inferenceService.inferenceResults?['diff'] > 1400) {
+          if (_inferenceService.inferenceResults?['diff'] > 1100) {
             Fluttertoast.cancel();
             _toast('젓가락을 다시 잡아주세요.');
           } else {
             Fluttertoast.cancel();
+            _toast(_inferenceService.inferenceResults?['res']);
           }
         } else {
-          debugPrint('null');
           Fluttertoast.cancel();
         }
         // _toast();

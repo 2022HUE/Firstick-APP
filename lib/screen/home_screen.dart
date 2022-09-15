@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:chopstick2/services/locator.dart';
+import 'package:chopstick2/services/inference_service.dart';
+import 'package:chopstick2/screen/camera.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -161,40 +164,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Container(
                                       child: FlatButton(
                                         onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            barrierDismissible:
-                                                true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                // 팝업 알람 띄우기
-                                                title: Text("서비스 준비중",
-                                                    style: TextStyle(
-                                                      fontFamily: '롯데마트B',
-                                                    )),
-                                                content: Text(
-                                                    "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
-                                                    style: TextStyle(
-                                                      fontFamily: '롯데마트B',
-                                                    ),
-                                                    textAlign: TextAlign
-                                                        .center), // 글씨 중앙 정렬
-                                                actions: [
-                                                  Center(
-                                                      child: FlatButton(
-                                                    child: Text("확인",
-                                                        style: TextStyle(
-                                                          fontFamily: '롯데마트B',
-                                                        )),
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop(); // 확인 누를 경우 팝업 무시하기
-                                                    },
-                                                  ))
-                                                ],
-                                              );
+                                          locator<InferenceService>()
+                                              .setModelConfig();
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return Camera();
                                             },
-                                          );
+                                          ));
                                         },
                                         padding: EdgeInsets.only(top: 0),
                                         child: CircleAvatar(
