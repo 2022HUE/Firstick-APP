@@ -1,79 +1,66 @@
 # Firstick-APP
 
-----
-## Git Commit Message Convention
+## 목차
+- **서비스 소개**
+- **프로젝트 구성**
+- **주요 기능**
+- **팀원 소개**
+- **실행**
+- **Docs**
 
-```python
-Type(유형): Subject(제목) (#이슈번호 - 생략가능)
-# blank line
-Body(본문 - 생략 가능)
-# blank line
-Footer(꼬릿말 - 생략 가능)
+
+## 1. 서비스 소개
+
+### 소개
+첫가락 애플리케이션은 젓가락을 쥐는 자세부터 차근차근 알려주는 튜토리얼, 젓가락을 위아래로 움직이는 젓가락질 교정, 젓가락질 실전을 위한 미니게임으로 구성할 계획이다. 컴퓨터 비전 기술을 활용하여 사용자는 실시간으로 자신의 젓가락질 자세를 직접 보며 쉽게 교정할 수 있으며 누구나 사용할 수 있는 모바일 애플리케이션을 기반으로 접근성을 높이려고 한다. 젓가락질 모션은 젓가락질 데이터를 수집한 뒤 머신러닝과 구글의 mediapipe 라이브러리를 사용하여 제어하며, 다양한 국적의 사용자를 염두에 두고 있는 만큼 다국어로 서비스를 제공할 예정이다.
+### 기대효과&활용분야
+![image](https://user-images.githubusercontent.com/54926467/190898237-14610817-5301-4251-96f2-b49c8a4d5e98.png)
+![image](https://user-images.githubusercontent.com/54926467/190898119-652a5272-5b38-4ad3-8777-c1295f57d667.png)
+![image](https://user-images.githubusercontent.com/54926467/190898103-b09051c3-ee33-4a85-bad1-4d37533685c0.png)
+
+## 2. 프로젝트 구성
+### 프로젝트 시스템 구성
+![image](https://user-images.githubusercontent.com/54926467/190898182-7471db84-933e-491f-8ba5-c469ffeeb4cd.png)
+### 프로젝트 아키텍처
+![image](https://user-images.githubusercontent.com/54926467/190898193-99ddd10f-fa6a-4362-9414-26b083e35987.png)
+### 디렉토리 구조
+![image](https://user-images.githubusercontent.com/54926467/190898197-8a41dc21-c169-4686-920a-62ddcbe10bc6.png)
+
+## 3. 주요기능
+
+
+## 4. 팀원소개
+|심혜린|PM|CV/AI/APP/DESIGN 등 개발 총괄|
+|:------:|:---:|:---:|
+|안지원|프론트엔드|모델 연결 및 리팩토링 등|
+|공채연|프론트엔드|UI 설계 및 리팩토링 등|
+|윤신지|영상처리/프론트엔드|영상처리 및 코드 리팩토링|
+
+## 5. 사용한 언어/패키지
+언어 `Python` `Flutter` `Dart`
+패키지/라이브러리
+### cv
+```
+OpenCV
+Numpy
+TensorFlow
+TensorFlowLite
+Mediapipe
+Pandas
+Pickle
+Scikit-Learn
+```
+### flutter
+```
+tflite_flutter
+tflite_flutter_helper
+camera
+get_it
+image
+page_transition
+animated_text_kit
+cupertino_icons
 ```
 
-
-### *Header*
-
-> 1. 커밋 유형과 제목의 첫 글자는 대문자로 표기한다.
-> 2. 제목은 50자를 넘기지 않고, 마침표(`.`)를 표기하지 않는다.
-> 3. 타입의 끝에는 콜론(`:`)을 작성하고 한 칸 공백을 두어 제목과 구분한다.
-> 4. 제목과 본문, 본문과 꼬릿말은 한 줄 띄워 분리한다.
-> 5. 제목은 명령문을 지향하며, 과거형은 적지 않는다.
-> 6. 이슈 번호가 있다면 제목의 끝에 (`(#이슈 번호)`-괄호포함)을 작성한다.
-
-<details>
-<summary><b>Type</b></summary>
-<div markdown="1">       
-
-|Type|Explanation|
-|:---|:---|
-|Feat|새로운 기능을 추가
-|Fix|	버그를 고친 경우
-|Chore|	간단한 수정 혹은 빌드 업데이트
-|Design|	사용자 UI 디자인 변경
-|!BREAKING CHANGE|	커다란 API 변경
-|!HOTFIX|	급하게 치명적인 버그를 고쳐야하는 경우
-|Style|	코드에 변화가 없는 수정 (코드 포맷 변경, 세미 콜론 누락, 들여쓰기 등)
-|Refactor|	프로덕션 코드 리팩토링 (결과의 변경 없이 코드의 구조를 재조정 / 가독성을 높여 유지보수를 하는 경우)
-|Comment|	필요한 주석 추가 및 변경
-|Docs|	문서를 수정한 경우
-|Test|	테스트 코드 (테스트 추가/ 테스트 코드 리팩토링) - 프로덕션 코드 변경 없음
-|Build|	빌드 테스트 업데이트, 패키지 매니저 설정 - 프로덕션 코드 변경 없음
-|Rename|	파일 혹은 폴더명을 수정하는 경우
-|Remove|	파일을 삭제하는 경우
-|Move|	코드나 파일을 이동하는 경우
-
-</div>
-</details>
-
-
-### *Body*
-
-*생략 가능*
-
-1. 생략이 불가능할 경우 자세한 내용을 적어 본문을 구성한다.
-2. 어떻게(How)보다 무엇(What)을, 왜(Why)에 초점을 맞춰 작성한다.
-
-
-### *Footer*
-
-*생략 가능*
-
-형식: `Type: #issue_number`
-
-1. 이슈 트랙킹을 위해 사용한다. (이슈 트래커 ID를 작성)
-2. 여러 개의 이슈는 쉼표로 구분한다.
-
-<details>
-<summary><b>Type</b></summary>
-<div markdown="1">       
-
-|Type|Explanation|
-|:---|:---|
-|Resolves|이슈 해결
-|Fixes|이슈 수정중
-|Ref|참고할 이슈가 있음
-
-
-</div>
-</details>
+## 6. 문서
+[Git Convention](https://github.com/2022HUE/Firstick-APP/blob/main/Docs/GitConvention.md)
