@@ -82,10 +82,10 @@ class _MyAppState extends State<fire> {
             Align(
               alignment: Alignment.center,
               child: Text(
-                '수고하셨습니다\n당신의 점수는 [ ]점 입니다.',
+                '수고하셨습니다\n당신의 점수는 N점 입니다.',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 30,
                 ),
               ),
