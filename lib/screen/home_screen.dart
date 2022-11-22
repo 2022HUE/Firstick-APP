@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'dart:math';
+import 'package:chopstick2/screen/fire.dart';
+import 'package:chopstick2/screen/level_view.dart';
 import 'package:chopstick2/screen/video.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -142,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               PageTransition(
                                                   type: PageTransitionType
                                                       .rightToLeft,
-                                                  child: VideoPlayerScreen()));
+                                                  child: VideoPlayerApp()));
                                         },
                                         padding: EdgeInsets.only(top: 0),
                                         child: CircleAvatar(
@@ -188,69 +190,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                     ),
-                                    // Container(
-                                    //   child: FlatButton(
-                                    //     onPressed: () {
-                                    //       showDialog(
-                                    //         context: context,
-                                    //         barrierDismissible:
-                                    //             true, // 팝업 메시지 띄운 후 뒷배경 touchEvent 가능 여부 = true
-                                    //         builder: (BuildContext context) {
-                                    //           return AlertDialog(
-                                    //             // 팝업 알람 띄우기
-                                    //             title: Text("서비스 준비중",
-                                    //                 style: TextStyle(
-                                    //                   fontFamily: '롯데마트B',
-                                    //                 )),
-                                    //             content: Text(
-                                    //                 "서비스 준비중입니다.\n빠른 시일 내에 준비하여 찾아뵙겠습니다.",
-                                    //                 style: TextStyle(
-                                    //                   fontFamily: '롯데마트B',
-                                    //                 ),
-                                    //                 textAlign: TextAlign
-                                    //                     .center), // 글씨 중앙 정렬
-                                    //             actions: [
-                                    //               Center(
-                                    //                   child: FlatButton(
-                                    //                 child: Text("확인",
-                                    //                     style: TextStyle(
-                                    //                       fontFamily: '롯데마트B',
-                                    //                     )),
-                                    //                 onPressed: () {
-                                    //                   Navigator.of(context)
-                                    //                       .pop(); // 확인 누를 경우 팝업 무시하기
-                                    //                 },
-                                    //               ))
-                                    //             ],
-                                    //           );
-                                    //         },
-                                    //       );
-                                    //     },
                                     Container(
                                       child: FlatButton(
                                         onPressed: () {
-                                          locator<InferenceService>()
-                                              .setModelConfig();
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                            builder: (context) {
-                                              return Camera(title: "1단계");
-                                            },
-                                          ));
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType
+                                                      .rightToLeft,
+                                                  child: LevelView()));
                                         },
                                         padding: EdgeInsets.only(top: 0),
                                         child: CircleAvatar(
                                           backgroundColor: Colors.black,
                                           radius: 55,
                                           child: CircleAvatar(
-                                            backgroundColor: Colors.white,
-                                            radius: 53,
-                                            child: Text('미니게임',
+                                              backgroundColor: Colors.white,
+                                              radius: 53,
+                                              child: Text(
+                                                '미니게임',
                                                 style: TextStyle(
                                                     fontFamily: '롯데마트B',
                                                     fontSize: 16,
-                                                    color: Colors.black)),
-                                          ),
+                                                    color: Colors.black),
+                                              )),
                                         ),
                                       ),
                                     ),
