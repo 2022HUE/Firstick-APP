@@ -130,11 +130,12 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
   }
 
   // 미니 게임인지 확인
-  bool isMiniGame(String title) {
+  bool _isMiniGame(String title) {
     List<String> gameTitles = ["1단계", "2단계", "3단계"];
     return gameTitles.contains(title);
   }
 
+  // 타이머 시작
   void _start(int duration) {
     subscription = Ticker().tick(ticks: duration).listen((value) {
       setState(() {
@@ -144,6 +145,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     });
   }
 
+  // 타이머 재시작
   void _resume() {
     setState(() {
       _isPaused = false;
@@ -151,6 +153,7 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     subscription.resume();
   }
 
+  // 타이머 정지
   void _pause() {
     setState(() {
       _isPaused = true;
@@ -169,10 +172,26 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
         appBar: _buildAppBar,
-        body: Preview(
-          controller: _controller,
-          draw: _draw,
-        ),
+        body: Stack(children: [
+          Preview(
+            controller: _controller,
+            draw: _draw,
+          ),
+          Visibility(
+            visible: _isMiniGame(widget.title),
+            // 타이머 위젯
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: Text(
+                _currentTick == null ? '' : _currentTick.toString(),
+                style: TextStyle(fontSize: 50, color: Colors.white),
+              ),
+            ),
+          ),
+        ]),
         floatingActionButton: _button,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
