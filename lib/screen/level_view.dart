@@ -1,3 +1,4 @@
+import 'package:chopstick2/screen/add_chopstick.dart';
 import 'package:chopstick2/screen/fire.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -60,7 +61,7 @@ class _LevelViewState extends State<LevelView> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.rightToLeft,
-                                  child: LevelView()));
+                                  child: AddChopstick()));
                         },
                         child: Text('Level 2'),
                       ),
