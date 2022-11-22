@@ -17,7 +17,7 @@ class _AddChopstickState extends State<AddChopstick> {
     return Scaffold(
         body: Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             height: 50,
