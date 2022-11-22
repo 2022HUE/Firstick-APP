@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 import 'dart:math' as math;
 import 'package:camera/camera.dart';
@@ -14,12 +15,19 @@ double degree = 270;
 double radian = degree * math.pi / 180;
 
 class Camera extends StatefulWidget {
-  const Camera({
-    Key? key,
-  }) : super(key: key);
+  final String title;
+  Camera({Key? key, required this.title}) : super(key: key);
 
   @override
   State<Camera> createState() => _CameraState();
+}
+
+// 타이머 관련 클래스
+class Ticker {
+  const Ticker();
+  Stream<int> tick({required int ticks}) {
+    return Stream.periodic(Duration(seconds: 1), (x) => ticks - x).take(ticks);
+  }
 }
 
 class _CameraState extends State<Camera> with WidgetsBindingObserver {
@@ -35,12 +43,18 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
   late InferenceService _inferenceService; // inference
   late IsolateUtils _isolateUtils; // isolate_utils
 
+  // 타이머 기능 관련 변수
+  late StreamSubscription<int> subscription;
+  int? _currentTick;
+  bool _isPaused = false;
+
   @override
   void initState() {
     _inferenceService = locator<InferenceService>();
 
     _initStateAsync();
     super.initState();
+    _start(60);
   }
 
   void _initStateAsync() async {
@@ -115,6 +129,35 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     );
   }
 
+  // 미니 게임인지 확인
+  bool isMiniGame(String title) {
+    List<String> gameTitles = ["1단계", "2단계", "3단계"];
+    return gameTitles.contains(title);
+  }
+
+  void _start(int duration) {
+    subscription = Ticker().tick(ticks: duration).listen((value) {
+      setState(() {
+        _isPaused = false;
+        _currentTick = value;
+      });
+    });
+  }
+
+  void _resume() {
+    setState(() {
+      _isPaused = false;
+    });
+    subscription.resume();
+  }
+
+  void _pause() {
+    setState(() {
+      _isPaused = true;
+    });
+    subscription.pause();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -138,10 +181,10 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
 
   AppBar get _buildAppBar => AppBar(
         backgroundColor: Color.fromARGB(255, 156, 181, 217),
-        // title: Text(
-        // '',
-        // style: TextStyle(fontFamily: '칠'),
-        // ),
+        title: Text(
+          widget.title,
+          // style: TextStyle(fontFamily: '롯데마트B'),
+        ),
       );
 
   Row get _button => Row(

@@ -133,7 +133,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 locator<InferenceService>().setModelConfig();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return Camera();
+                    return Camera(title: "튜토리얼");
                   },
                 ));
               },
